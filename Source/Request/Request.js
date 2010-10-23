@@ -231,10 +231,7 @@ var Request = this.Request = new Class({
 var methods = {};
 ['get', 'post', 'put', 'delete', 'GET', 'POST', 'PUT', 'DELETE'].each(function(method){
 	methods[method] = function(data){
-		return this.send({
-			data: data,
-			method: method
-		});
+		return this.send(Object.append({ method: method }, (data != undefined) && { data: data }));
 	};
 });
 
