@@ -15,8 +15,7 @@ provides: [Element, Elements, $, $$, Iframe, Selectors]
 */
 
 var Element = function(tag, props){
-	var konstructor = Element.Constructors[tag];
-	if (konstructor) return konstructor(props);
+	if (Element.Constructors.hasOwnProperty(tag)) return Element.Constructors[tag](props);
 	if (typeof tag != 'string') return document.id(tag).set(props);
 
 	if (!props) props = {};
